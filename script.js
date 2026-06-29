@@ -76,7 +76,7 @@ function spin() {
     const targetAngle = 360 - selectedMiddleAngle + randomFineTuning;
 
     const fullTurns = 6 + Math.floor(Math.random() * 4); // 6 à 9 tours complets
-    currentRotation += fullTurns * 360 + targetAngle;
+    currentRotation = fullTurns * 360 + targetAngle;
 
     wheel.style.transform = `rotate(${currentRotation}deg)`;
 
