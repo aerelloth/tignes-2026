@@ -73,7 +73,7 @@ function spin() {
 
     const selectedMiddleAngle = selectedIndex * segmentAngle + segmentAngle / 2;
     const randomFineTuning = (Math.random() - 0.5) * (segmentAngle * 0.55);
-    const targetAngle = 360 - selectedMiddleAngle + randomFineTuning;
+    const targetAngle = -selectedMiddleAngle + randomFineTuning;
 
     const fullTurns = 6 + Math.floor(Math.random() * 4); // 6 à 9 tours complets
     currentRotation = fullTurns * 360 + targetAngle;
