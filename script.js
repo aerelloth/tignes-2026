@@ -64,29 +64,34 @@ function pickWeightedSegment() {
 }
 
 function spin() {
-    const selected = pickWeightedSegment();
+    spinButton.disabled = true;
+    spinButton.classList.add("hidden");
+
+    const selected = getRandomSegment();
     const selectedIndex = segments.indexOf(selected);
 
-    button.disabled = true;
-    button.hidden = true;
-    status.textContent = "La roue tourne... verdict imminent 👀";
+    const segmentAngle = 360 / segments.length;
 
-    const selectedMiddleAngle = selectedIndex * segmentAngle + segmentAngle / 2;
-    const randomFineTuning = (Math.random() - 0.5) * (segmentAngle * 0.55);
-    const targetAngle = -selectedMiddleAngle + randomFineTuning;
+    // Centre du segment dans la roue, avec le même repère que conic-gradient(from -90deg)
+    const selectedCenterAngle = selectedIndex * segmentAngle + segmentAngle / 2;
 
-    const fullTurns = 6 + Math.floor(Math.random() * 4); // 6 à 9 tours complets
-    currentRotation = fullTurns * 360 + targetAngle;
+    // Petit hasard pour ne pas toujours tomber pile au centre
+    const randomOffset = (Math.random() - 0.5) * segmentAngle * 0.5;
+
+    // Comme la flèche est en haut, et que la roue tourne dans le sens horaire :
+    const finalAngle = 360 - selectedCenterAngle + randomOffset;
+
+    const fullTurns = 6 + Math.floor(Math.random() * 3);
+
+    currentRotation = fullTurns * 360 + finalAngle;
 
     wheel.style.transform = `rotate(${currentRotation}deg)`;
 
-    window.setTimeout(() => {
-        status.textContent = `Résultat : ${selected.label}. Redirection...`;
-    }, 4200);
+    resultText.textContent = `Résultat : ${selected.label}`;
 
-    window.setTimeout(() => {
+    setTimeout(() => {
         window.location.href = selected.url;
-    }, 5200);
+    }, 4200);
 }
 
 buildWheel();
