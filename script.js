@@ -63,35 +63,45 @@ function pickWeightedSegment() {
     return candidates[candidates.length - 1];
 }
 
-function spin() {
-    spinButton.disabled = true;
-    spinButton.classList.add("hidden");
+function normalizeAngle(angle) {
+    return ((angle % 360) + 360) % 360;
+}
 
-    const selected = getRandomSegment();
+function spin() {
+    const selected = pickWeightedSegment();
     const selectedIndex = segments.indexOf(selected);
 
-    const segmentAngle = 360 / segments.length;
+    button.disabled = true;
+    button.hidden = true;
+    status.textContent = "La roue tourne... verdict imminent 👀";
 
-    // Centre du segment dans la roue, avec le même repère que conic-gradient(from -90deg)
-    const selectedCenterAngle = selectedIndex * segmentAngle + segmentAngle / 2;
+    const selectedMiddleAngle = selectedIndex * segmentAngle + segmentAngle / 2;
+    const randomFineTuning = (Math.random() - 0.5) * (segmentAngle * 0.55);
 
-    // Petit hasard pour ne pas toujours tomber pile au centre
-    const randomOffset = (Math.random() - 0.5) * segmentAngle * 0.5;
+    // À ajuster si la flèche est décalée visuellement.
+    // 0 = flèche en haut avec conic-gradient(from -90deg)
+    const pointerOffset = 0;
 
-    // Comme la flèche est en haut, et que la roue tourne dans le sens horaire :
-    const finalAngle = 360 - selectedCenterAngle + randomOffset;
+    const desiredModulo = normalizeAngle(
+        pointerOffset - selectedMiddleAngle + randomFineTuning
+    );
 
-    const fullTurns = 6 + Math.floor(Math.random() * 3);
+    const currentModulo = normalizeAngle(currentRotation);
+    const deltaToTarget = normalizeAngle(desiredModulo - currentModulo);
 
-    currentRotation = fullTurns * 360 + finalAngle;
+    const fullTurns = 6 + Math.floor(Math.random() * 4);
+
+    currentRotation += fullTurns * 360 + deltaToTarget;
 
     wheel.style.transform = `rotate(${currentRotation}deg)`;
 
-    resultText.textContent = `Résultat : ${selected.label}`;
-
-    setTimeout(() => {
-        window.location.href = selected.url;
+    window.setTimeout(() => {
+        status.textContent = `Résultat : ${selected.label}. Redirection...`;
     }, 4200);
+
+    window.setTimeout(() => {
+        window.location.href = selected.url;
+    }, 5200);
 }
 
 buildWheel();
