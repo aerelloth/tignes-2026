@@ -76,8 +76,7 @@ function spin() {
     status.textContent = "La roue tourne... verdict imminent 👀";
 
     const selectedMiddleAngle = selectedIndex * segmentAngle + segmentAngle / 2;
-    //const randomFineTuning = (Math.random() - 0.5) * (segmentAngle * 0.55);
-    const randomFineTuning = 0;
+    const randomFineTuning = (Math.random() - 0.5) * (segmentAngle * 0.2);
     
     // À ajuster si la flèche est décalée visuellement.
     // 0 = flèche en haut avec conic-gradient(from -90deg)
