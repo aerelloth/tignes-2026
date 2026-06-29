@@ -1,12 +1,38 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
-  <meta charset="utf-8">
-  <title>Test GitHub Pages</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La roue du destin en fauteuil</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <h1>Test GitHub Pages</h1>
-  <p>Cette page devrait être accessible en HTML 🤞</p>
+  <main class="app">
+    <p class="eyebrow">Tournée en fauteuil 2026</p>
+    <h1>La roue du destin 🦽</h1>
+    <p class="intro">Scanne, lance la roue, et découvre quelle version de l’histoire tu obtiens.</p>
+
+    <section class="wheel-zone" aria-label="Roue aléatoire">
+      <div class="pointer" aria-hidden="true"></div>
+
+      <div class="wheel-wrap">
+        <div id="wheel" class="wheel" aria-live="polite"></div>
+        <div class="hub">Tente<br>ta chance</div>
+      </div>
+    </section>
+
+    <button id="spinButton" class="spin-button" type="button">Lancer la roue ✨</button>
+    <p id="status" class="status" aria-live="polite"></p>
+
+    <details class="debug">
+      <summary>Voir les probabilités de test</summary>
+      <ul id="oddsList"></ul>
+    </details>
+  </main>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
