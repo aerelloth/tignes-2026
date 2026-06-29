@@ -80,7 +80,7 @@ function spin() {
 
     // À ajuster si la flèche est décalée visuellement.
     // 0 = flèche en haut avec conic-gradient(from -90deg)
-    const pointerOffset = 0;
+    const pointerOffset = 60;
 
     const desiredModulo = normalizeAngle(
         pointerOffset - selectedMiddleAngle + randomFineTuning
