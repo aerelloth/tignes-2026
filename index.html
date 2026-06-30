@@ -6,13 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>La roue du destin en fauteuil</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/jpg" href="assets/favicon-wheel.jpg">
+  <link rel="apple-touch-icon" href="assets/favicon-wheel.jpg">
 </head>
 
 <body>
   <main class="app">
-    <p class="eyebrow">Tournée en fauteuil 2026</p>
-    <h1>La roue du destin 🦽</h1>
-    <p class="intro">Scanne, lance la roue, et découvre quelle version de l’histoire tu obtiens.</p>
+    <div class="hero-logo">
+      <img src="assets/logo-tignes-2026.jpg" alt="Tignes 2026 - Tournée en fauteuil">
+    </div>
+
+    <p class="intro">
+      Lance la roue et découvre une version de mon histoire. Sans doute.
+    </p>
 
     <section class="wheel-zone" aria-label="Roue aléatoire">
       <div class="pointer" aria-hidden="true"></div>
@@ -26,13 +32,10 @@
     <button id="spinButton" class="spin-button" type="button">Lancer la roue ✨</button>
     <p id="status" class="status" aria-live="polite"></p>
 
-    <details class="debug">
-      <summary>Voir les probabilités de test</summary>
-      <ul id="oddsList"></ul>
-    </details>
+    <p>Cette page a été bricolée depuis un téléphone portable dans un lit d'hôpital, merci pour votre compréhension !</p>
   </main>
 
-  <script src="script.js?v=6"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

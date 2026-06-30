@@ -1,10 +1,10 @@
 const segments = [
-    { label: "La vraie histoire", url: "pages/histoire.html", weight: 50, color: "#fde68a" },
-    { label: "Météo sur place", url: "pages/meteo.html", weight: 15, color: "#fdba74" },
-    { label: "Fortune cookie", url: "pages/fortune.html", weight: 10, color: "#fbcfe8" },
-    { label: "Spoiler chanson", url: "pages/spoiler.html", weight: 10, color: "#c4b5fd" },
-    { label: "Rick Roll", url: "pages/rickroll.html", weight: 15, color: "#99f6e4" },
-    { label: "Les nudes exclusifs", url: "pages/nudes.html", weight: 0, color: "#bfdbfe" }
+    { label: "La vraie histoire", url: "pages/histoire.html", weight: 50, color: "#ff4d6d" },
+    { label: "Météo sur place", url: "pages/meteo.html", weight: 10, color: "#ff9f1c" },
+    { label: "Fortune cookie", url: "pages/fortune.html", weight: 10, color: "#ffd60a" },
+    { label: "Spoiler chanson", url: "pages/spoiler.html", weight: 15, color: "#38b000" },
+    { label: "Surprise", url: "pages/rickroll.html", weight: 15, color: "#00b4d8" },
+    { label: "Nudes exclusifs", url: "pages/nudes.html", weight: 0, color: "#9d4edd" }
 ];
 
 const wheel = document.querySelector("#wheel");
@@ -39,14 +39,6 @@ function buildWheel() {
         }
 
         wheel.appendChild(label);
-    });
-
-    const totalWeight = segments.reduce((sum, segment) => sum + segment.weight, 0);
-    segments.forEach(segment => {
-        const item = document.createElement("li");
-        const percent = totalWeight ? Math.round((segment.weight / totalWeight) * 100) : 0;
-        item.textContent = `${segment.label} : ${percent}%${segment.weight === 0 ? " — impossible à tirer" : ""}`;
-        oddsList.appendChild(item);
     });
 }
 
