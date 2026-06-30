@@ -139,7 +139,7 @@ body {
     top: 50%;
     width: 42%;
     transform-origin: 0 0;
-    padding-left: 16%;
+    padding-left: 32%;
     font-size: clamp(.68rem, 2.3vw, .95rem);
     font-weight: 850;
     line-height: 1.05;
@@ -200,7 +200,7 @@ body {
 }
 
 .details {
-    margin: 18px auto 0;
+    margin: 8px auto 0;
     max-width: 380px;
     text-align: left;
     color: var(--muted);
