@@ -49,18 +49,16 @@ body {
     backdrop-filter: blur(10px);
 }
 
-.eyebrow {
-    margin: 0 0 8px;
-    color: var(--accent);
-    font-weight: 900;
-    letter-spacing: .08em;
-    text-transform: uppercase;
+.hero-logo {
+    margin-bottom: 1.5rem;
 }
 
-h1 {
-    margin: 0;
-    font-size: clamp(2rem, 7vw, 4.25rem);
-    line-height: .95;
+.hero-logo img {
+    width: min(90%, 420px);
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, .12));
 }
 
 .intro {
